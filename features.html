@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+
+    <title>特色</title>
+
+    <style>
+        .container {
+            width: 40%;
+            margin-left: 13%;
+        }
+
+        .carousel-inner img {
+            width: 40%;
+            height: auto;
+        }
+
+        .carousel-indicators {
+            list-style: none;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            top: 0;
+            right: 11%;
+            bottom: 0;
+            left: auto;
+            background: 303030;
+            color: white;
+            padding: 4%;
+            display: flex;
+            align-items: center;
+            width: 35%;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .under-image {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+
+        </script>
+    </nav>
+    <div style="display: flex; align-items: center; justify-content: center; margin-top: 7%;">
+        <img src="./pictures/star.png" alt="star" style="width: 3%; height: 3%; margin-right: 1%;">
+        <h2 style="color: white;"><b>特色</b></h2>
+    </div>
+    <hr style="width: 70%; margin: 1% auto; border: 2px solid #737171;">
+
+    <div class="container mt-5">
+        <div id="historyCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./pictures/features1.jpg" class="d-block w-100" alt="特色1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./pictures/features2.jpg" class="d-block w-100" alt="特色2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./pictures/features3.jpg" class="d-block w-100" alt="特色3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#historyCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#historyCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <ol class="carousel-indicators">
+                <li data-bs-target="#historyCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#historyCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#historyCarousel" data-bs-slide-to="2"></li>
+            </ol>
+        </div>
+        <div class="carousel-caption">
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;民雄擁有許多全臺獨一無二的在地文化景點， 像是三級古蹟大士爺廟、遠近馳名的民雄鬼屋、國家廣播文物館、嘉義酒廠...等特色景點，還有扣連舊地名、以貓為主題的社區逼真立體彩繪牆，等你一一探索與發現！而大士爺廟是嘉義縣的縣定古蹟，是民雄主要的信仰中心。
+            </p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleIndicators'), {
+                interval: 2000,
+                pause: "hover"
+            });
+
+            document.getElementById('btn').addEventListener('click', function () {
+                carousel.next();
+            });
+            var indicators = document.querySelectorAll('.carousel-indicators button');
+            indicators.forEach(function (indicator, index) {
+                indicator.addEventListener('click', function () {
+                    carousel.to(index);
+                });
+            });
+        });
+    </script>
+    <img src="./pictures/under.png" alt="under" class="under-image" style="width: 100%; height: auto;">
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./map.css">
+    <title>近期活動</title>
+
+    <style>
+        #container {
+            display: flex;
+            width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 3% auto;
+            color: black;
+            background-color: #eaeae9;
+        }
+
+        th,td {
+            border: 1px solid #737171;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #D56830;
+        }
+
+        thead {
+            color: white;
+        }
+
+        .latest-events {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 100px;
+            background-color: #d4b899;
+            padding: 20px;
+            border-radius: 10px;
+            width: 750px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .doublestar {
+            position: absolute;
+            left: 50px;
+            top:100px;
+        }
+
+        .ghost {
+            position: absolute;
+            right: 18%;
+            top:15%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+
+        </script>
+    </nav>
+
+    <div class="latest-events" style="display: flex; align-items: center; justify-content: center; margin-top: 100px;">
+        <h2 style="color: white;"><b>最新消息</b></h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>活動</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2023-10-29</td>
+                    <td>銀河谷音劇團-傳說,林默娘</td>
+                </tr>
+                <tr>
+                    <td>2023-11-04</td>
+                    <td>舞龍舞蹈團-海山之境-奇FANTASY</td>
+                </tr>
+                <tr>
+                    <td>2023-11-08</td>
+                    <td>春河劇團-《叫我林彩香!》我的婆婆怎麼那麼可愛前傳</td>
+                </tr>
+                <tr>
+                    <td>2023-12-23</td>
+                    <td>廣藝基金會-廣藝劇場NO.5《徽因》臺韓合創音樂劇</td>
+                </tr>
+                <tr>
+                    <td>2024-01-01</td>
+                    <td>元旦升旗</td>
+                </tr>
+                <tr>
+                    <td>2024-01-06</td>
+                    <td>民雄律動”美”一天 嘉年華</td>
+                </tr>
+                <tr>
+                    <td>2024-01-23</td>
+                    <td>《嫁衣裳》蔡鎮宇胡琴獨奏音樂會</td>
+                </tr>
+                <tr>
+                    <td>2024/01/01~2024/06/30</td>
+                    <td>遊於偶藝三昧堂精工布袋戲偶展</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <img src="./pictures/doublestar.png" alt="doublestar" class="doublestar" style="width: 100px; height: 100px; z-index: -1;">
+    <img src="./pictures/ghost.png" alt="ghost" class="ghost" style="width: 10%; height: auto; z-index: 1;">
+
+    <div class="stars">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star2.png" alt="stars" class="star">
+        <img src="./pictures/star2.png" alt="stars" class="star">
+      </div>
+</body>
+
+</html>

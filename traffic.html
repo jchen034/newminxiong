@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./map.css">
+    <title>交通方式</title>
+
+    <style>
+        #container {
+            display: flex;
+            width: 100%;
+        }
+
+        #map {
+            margin-left: 10%;
+            margin-top:5%;
+        }
+
+        #methods {
+            position: absolute;
+            right: 0.1%;
+            bottom: 30%;
+            background: 303030;
+            color: white;
+            padding: 1%;
+            display: flex;
+            align-items: center;
+            width: 50%;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .tree-image {
+            position: absolute;
+            bottom: 0%;
+        }
+
+        .treel{
+            left: 2%;
+        }
+
+        .treer{
+            right: 2%;
+        }
+
+        .witch{
+            margin-left: 7%;
+            margin-bottom: 2%;
+        }
+
+        .skull{
+            right: 6%;
+            margin-bottom: 0.1%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+    </nav>
+    
+    <div style="display: flex; align-items: center; justify-content: center; margin-top: 6%;">
+        <img src="./pictures/star.png" alt="star" style="width: 3%; height: 3%; margin-right: 1%;">
+        <h2 style="color: white;"><b>交通方式</b></h2>
+    </div>
+    <hr style="width: 70%; margin: 0.5% auto; border: 2px solid #4f4f4f;">
+
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.367957880728!2d120.42909217464549!3d23.55522469624262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ebdde3f090d71%3A0x6cc7b002e2c1129f!2zNjIx5ZiJ576p57ij5rCR6ZuE6YSJ5ZKM5bmz6Lev5rCR6ZuE54Gr6LuK56uZ!5e0!3m2!1szh-TW!2stw!4v1701069249931!5m2!1szh-TW!2stw" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div id="methods">
+        <ul>
+            <li><b>汽車：</b> 從國道1號的257-民雄出口下交流道。</li>
+            <li><b>機車：</b> 沿著台1線一直騎即可到達民雄市區。</li>
+            <li><b>公車：</b> 在火車站搭乘7304經19站即可到達民雄火車站。</li>
+            <li><b>火車：</b> 搭乘火車到民雄火車站,步行約5分鐘即可到達民雄市區。</li>
+        </ul>
+    </div>
+
+    <img src="./pictures/under3.png" alt="under3" class="tree-image under3" style="width: 1300px; height: 20px; z-index: -1;">
+    <img src="./pictures/witch.png" alt="witch" class="tree-image witch" style="width: 80px; height: 40px; z-index: -1;">
+    <img src="./pictures/treel.png" alt="treel" class="tree-image treel" style="width: 100px; height: 150px; z-index: -1;">
+    <img src="./pictures/treer.png" alt="treer" class="tree-image treer" style="width: 100px; height: 150px; z-index: -1;">
+    <img src="./pictures/treel.png" alt="treel" class="tree-image treel" style="width: 100px; height: 100px; z-index: -1;">
+    <img src="./pictures/skull.png" alt="skull" class="tree-image skull" style="width: 40px; height: 40px; z-index: -1;">
+    
+    <div class="stars">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star2.png" alt="stars" class="star">
+        <img src="./pictures/star2.png" alt="stars" class="star">
+      </div>
+</body>
+
+</html>

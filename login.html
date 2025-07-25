@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./map.css">
+    <style>
+        body {
+            background-color: #303030;
+            margin: 0;
+            font-family: 'meow';
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+    </nav>
+    <!--login-->
+    <div class="opening">
+        <h2 class="gogo">歡迎來到民雄之旅!</h2>
+        <h2 class="gogo2"><img src="./pictures/shock.png" width="60px">繫上安全帶，我們上車囉~</h2>
+    </div>
+    <div class="forsnow">
+        <img src="./pictures/snowgroup.png" class="snow">
+    </div>
+
+    <div class="login">
+
+        <form class="form">
+            <div class="accountdiv">
+                <snap></snap>
+                <img class="littlecat" src="./pictures/littlecat.png" width="30px" height="30px">
+                <p>帳號：<input type="text" name="username" placeholder="請輸入email" id="email"></p>
+
+            </div>
+            <div class="passwddiv">
+                <snap></snap>
+                <img class="littleeye" src="./pictures/littleeye.png" width="30px" height="30px">
+                <p>密碼：<input type="password" name="password" placeholder="請輸入密碼" id="passwd"></p>
+            </div>
+        </form>
+        <div class="login-regist">
+            <p><button class="confirm">登入</button></p>
+            <a href="./regist.html">
+                <p><button class="confirm2">註冊</button></p>
+            </a>
+        </div>
+
+    </div>
+    <script src="https://cdn.direbase.com/auth/dist/auth.min.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBdxQhxakgQCIYKjEtAAPk_6i945ASf1o4",
+            authDomain: "beat-cat-bed4f.firebaseapp.com",
+            projectId: "beat-cat-bed4f",
+            storageBucket: "beat-cat-bed4f.appspot.com",
+            messagingSenderId: "326045849594",
+            appId: "1:326045849594:web:dc871d0fd046498dbe3643",
+            measurementId: "G-1L7HBW11H4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app)
+        const clouddb = getFirestore(app);
+
+
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("passwd").value;
+
+        document.querySelector('.confirm').addEventListener('click', function () {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("passwd").value;
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, email, password)
+                .then(async (userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    const docSnap = await getdata(user.uid);
+                    //write data unto localstorage
+                    localStorage.setItem("userid", user.uid);
+                    localStorage.setItem("username", docSnap.data().name);
+                    localStorage.setItem("profileimg", docSnap.data().profileimg);
+                    console.log(docSnap.data().profileimg);
+                    //check if from post.html
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const fromPage = urlParams.get('from');
+                    if (fromPage == "post.html") {
+                        window.location.href = "./post.html";
+                    }
+                    else {
+                        window.location.href = "./threads.html";
+                    }
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode);
+                    console.log(errorMessage);
+                });
+
+
+            //window.location.href = "./threads.html";
+            //alert("登入成功");
+
+            //goto threads.html
+
+        });
+
+        async function getdata(userid) {
+            var ref1 = doc(clouddb, 'user', userid);
+            const docSnap = await getDoc(ref1);
+            return docSnap;
+            //write profileimg into cookie
+
+        }
+
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

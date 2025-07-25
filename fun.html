@@ -1,0 +1,275 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./home.css">
+    <title>好玩的</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+                background-color: #303030;
+                margin: 0;
+                font-family: 'meow';
+                font-size: 20px;
+            }
+
+        .ghost-img {
+            position: fixed;
+            top: 10%;
+            right: 0%;
+            height: 30%;
+            z-index: 1;
+        }
+
+        .net1-img {
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            height: 30%;
+            z-index: 1;
+        }   
+
+        .net2-img {
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            height: 22%;
+            z-index: 2;
+        }
+
+        .container {
+            position: relative; /* 修改为相对定位 */
+            background-color: #CFAA80;
+            width: 80%;
+            margin: 20px auto; /* 调整垂直间距 */
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            /* 使用 flex 布局，子元素会自动填充父容器的高度 */
+            flex-direction: row; /* 列布局 */
+        }
+
+        .container:nth-child(even) {
+            background-color:cadetblue;
+            flex-direction: row;
+        }
+
+        .container:nth-child(even) .play-name .text {
+            color: rgb(29, 120, 123);
+        }
+
+        .container:nth-child(odd) {
+            background-color: #CFAA80;
+            flex-direction: row;
+        }
+
+        .play-name,
+        .play-end {
+            flex: 1;
+            /* 两侧列的宽度 */
+            background-color: #CFAA80;
+            display: flex;
+            flex-direction: column; /* 添加列布局 */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container:nth-child(even) .play-name,
+        .container:nth-child(even) .play-end {
+            background-color:cadetblue;
+        }
+
+        .play-name .text {
+            color: #aa7130;
+            font-size: 2em;
+            text-align: center;
+            margin-top: 20px; /* 根据需要调整距离顶部的距离 */
+        }
+
+        .play-photo {
+            flex: 3;
+            /* 中间列的宽度是两侧列的三倍 */
+            background-color: #CFAA80;
+            border-radius: 0 0 15px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            /* 隐藏溢出的内容 */
+        }
+
+        .play-photo img {
+            max-width: 100%;
+            max-height: 100%;
+            /* 限制图像的最大高度 */
+            width: auto;
+            /* 保持图像纵横比 */
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 半透明的灰色背景 */
+            opacity: 0;
+            /* 默认不显示 */
+            transition: opacity 0.3s ease;
+            /* 添加渐变效果 */
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container:hover .overlay {
+            opacity: 0.8;
+            /* 鼠标悬停时显示覆盖层 */
+        }
+
+        .text {
+            color: white;
+            font-size: 3em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+    </nav>
+
+    <img src="./pictures/ghost1.png" alt="Ghost" class="ghost-img">
+    <img src="./pictures/net1.png" alt="Net" class="net1-img">
+    <img src="./pictures/net2.png" alt="Net" class="net2-img">
+
+    <div class="container" onclick="window.location.href='play1.html';">
+        <div class="play-name">
+            <span class="text">民雄鬼屋</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play1.JPG" alt="play1">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">民雄鬼屋</span>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='play2.html';">
+        <div class="play-name">
+            <span class="text">KHTOY絨毛玩偶旗艦館</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play2.png" alt="play2">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">KHTOY絨毛玩偶旗艦館</span>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='play3.html';">
+        <div class="play-name">
+            <span class="text">榮苗卡丁甩尾場</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play3.JPG" alt="play3">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">榮苗卡丁甩尾場</span>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='play4.html';">
+        <div class="play-name">
+            <span class="text">嘉義縣表演藝術中心</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play4.JPG" alt="play4">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">嘉義縣表演藝術中心</span>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='play5.html';">
+        <div class="play-name">
+            <span class="text">三隻小豬觀光農場</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play5.png" alt="play5">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">三隻小豬觀光農場</span>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='play6.html';">
+        <div class="play-name">
+            <span class="text">星巴克</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play6.JPG" alt="play6">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">星巴克</span>
+        </div>
+    </div>
+
+    <div class="container" onclick="window.location.href='play7.html';">
+        <div class="play-name">
+            <span class="text">迷霧松境</span>
+        </div>
+        <div class="play-photo">
+            <img src="./pictures/play7.JPG" alt="play7">
+        </div>
+        <div class="play-end"></div>
+        <div class="overlay">
+            <span class="text">迷霧松境</span>
+        </div>
+    </div>
+    
+</body>
+

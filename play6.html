@@ -1,0 +1,320 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./home.css">
+    <title>星巴克</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+                background-color: #303030;
+                margin: 0;
+                font-family: 'meow';
+                font-size: 20px;
+            }
+        
+        .ghost-img {
+            position: fixed;
+            top: 10%;
+            right: 0%;
+            height: 30%;
+            z-index: 1;
+        }
+
+        .net1-img {
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            height: 30%;
+            z-index: 1;
+        }
+
+        .net2-img {
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            height: 22%;
+            z-index: 2;
+        }
+
+        .frame {
+            position: absolute;
+            /* 修改为相对定位 */
+            background-color: gray;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 180%;
+            margin: 20px auto;
+            /* 调整垂直间距 */
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* 使用 flex 布局，子元素会自动填充父容器的高度 */
+        }
+
+        .first-view {
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 40%;
+            flex: 2;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .second-view {
+            top: 1%;
+            left: 0%;
+            width: 100%;
+            height: 80%;
+            flex: 2;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .empty-second {
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 60%;
+            flex: 1;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .pin-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5%;
+            z-index: 3;
+        }
+
+
+        .site-img {
+            position: absolute;
+            top: 3%;
+            left: 55%;
+            height: 40px;
+            z-index: 3;
+        }
+
+        .mark {
+            position: absolute;
+            top: 3%;
+            right: 5%;
+            height: 40px;
+            z-index: 3;
+        }
+
+        .candy-img {
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            height: 5%;
+            z-index: 3;
+        }
+
+        .photo {
+            top: 10%;
+            left: 5%;
+            width: 100%;
+            height: 80%;
+            flex: 11;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .photo img {
+            max-width: 100%;
+            max-height: 100%;
+            /* 限制图像的最大高度 */
+            width: auto;
+            /* 保持图像纵横比 */
+            height: auto;
+        }
+
+        .empty-first {
+            top: 10%;
+            left: 0%;
+            width: 100%;
+            height: 60%;
+            flex: 1;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .introduction {
+            top: 5%;
+            right: 1%;
+            width: 100%;
+            height: 93%;
+            flex: 8;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            flex-direction: column;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .introduction h1 {
+            margin: 0;
+            padding: 0;
+            text-align: start;
+            font-size: 30px;
+            color: white;
+            font-weight: bold;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+
+        .introduction h2 {
+            margin: 0;
+            padding: 0;
+            text-align: start;
+            font-size: 20px;
+            color: white;
+            margin-top: 2%;
+        }
+
+        .introduction h3 {
+            margin: 0;
+            padding: 0;
+            text-align: start;
+            font-size: 20px;
+            color: #f8b568;
+            margin-top: 2%;
+        }
+
+        .introduction p {
+            margin: 0;
+            padding: 0;
+            text-align: start;
+            font-size: 18px;
+            color: white;
+            margin-top: 2%;
+        }
+
+        .iframe {
+            margin-top: 10%;
+            transform: translateX(-50%);
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            /* 子元素自动填充父容器的高度 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            position: relative;
+        }
+
+        .second-view h2 {
+            margin: 0;
+            padding: 0;
+            text-align: start;
+            font-size: 20px;
+            color: white;
+            margin-left: 5%;
+            margin-right: 10%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+    </nav>
+
+    <img src="./pictures/ghost1.png" alt="Ghost" class="ghost-img">
+    <img src="./pictures/net1.png" alt="Net" class="net1-img">
+    <img src="./pictures/net2.png" alt="Net" class="net2-img">
+
+    <div class="frame">
+        <img src="./pictures/pin.png" alt="Pin" class="pin-img">
+        <img src="./pictures/site.png" alt="Site" class="site-img">
+        <img src="./pictures/candy.png" alt="Candy" class="candy-img">
+        <div class="first-view">
+            <div class="photo">
+                <img src="./pictures/play6-1.JPG" alt="Eat1" class="eat1-img">
+            </div>
+            <div class="empty-first"></div>
+            <div class="introduction">
+                <h1>星巴克</h1>
+                <h2>●營業時間：</h2>
+                <h3>&nbsp;&nbsp;星期一～日：7:00～22:00</h3>
+                <h2>●地址：</h2>
+                <h3>&nbsp;&nbsp;嘉義縣民雄鄉建國路一段235號</h3>
+                <h2>●簡介：</h2>
+                <p>&nbsp;&nbsp;民雄的星巴克外觀以黑色沉穩色調與木材交錯，建築的三角型主體及長方型副體結構，呈現既現代又古典的教堂風格，從外面看真的很漂亮，是學生要討論報告、老友敘舊的絕佳地點。</p>
+            </div>
+        </div>
+        <hr style="border: 3px solid white; width: 90%; margin: 0 auto;">
+        <div class="empty-second"></div>
+        <div class="second-view">
+            <h2>●地圖：</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.252648801183!2d120.4311609748401!3d23.5593678960844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ebddf319dc651%3A0x9f9895b2219acb5e!2z5pif5be05YWLIOWYiee-qeawkembhOmWgOW4gg!5e0!3m2!1szh-TW!2stw!4v1704453172470!5m2!1szh-TW!2stw"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</body>

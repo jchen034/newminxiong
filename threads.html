@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./nav.css">
+    <link rel=stylesheet href="threads.css">
+    <title>互動平台</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="threads.js"></script>
+    <nav id="navigator">
+        <img src="./pictures/logo.png" alt="Logo">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+            <a>簡介</a>
+            <div class="dropdown-content dropdown-content-columns intro">
+                <a href="history.html">歷史</a>
+                <a href="location.html">地理位置</a>
+                <a href="features.html">特色</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a>景點</a>
+            <div class="dropdown-content dropdown-content-columns sights">
+                <a href="delicious.html">好吃的</a>
+                <a href="fun.html">好玩的</a>
+            </div>
+        </div>
+        <a href="threads.html">互動平台</a>
+        <a href="weather.html">即時天氣</a>
+        <a href="traffic.html">交通</a>
+        <a href="activity.html">近期活動</a>
+
+        <div class="right-corner">
+            <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+        </div>
+        <img src="./pictures/hand.png" alt="hand" class="hand-img">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+        <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+    </nav>
+
+    <div class="stars">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star.png" alt="stars" class="star">
+        <img src="./pictures/star2.png" alt="stars" class="star">
+        <img src="./pictures/star2.png" alt="stars" class="star">
+    </div>
+
+    <div id="writepostbtn">
+        <a href="./post.html">
+            <img src="./pictures/writepost.png" alt="writepost" id="writepost">
+        </a>
+    </div>
+    <!--<script>
+            function writepostClick() {
+                var user = auth.currentUser;
+                if (user) {
+                    window.location.href = "./post.html";
+                }
+                else {
+                    alert("您尚未登入，請先登入");
+                    window.location.href = "./login.html";
+                }
+            }
+            onclick="writepostClick()"
+        </script>-->
+
+    <div id="post-container">
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+            import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+            import { getFirestore, collection, doc, getDocs, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyBdxQhxakgQCIYKjEtAAPk_6i945ASf1o4",
+                authDomain: "beat-cat-bed4f.firebaseapp.com",
+                projectId: "beat-cat-bed4f",
+                storageBucket: "beat-cat-bed4f.appspot.com",
+                messagingSenderId: "326045849594",
+                appId: "1:326045849594:web:dc871d0fd046498dbe3643",
+                measurementId: "G-1L7HBW11H4"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const clouddb = getFirestore(app);
+            const auth = getAuth(app);
+            //get every data from firestore
+            const ref = collection(clouddb, 'post');
+            const querySnapshot = await getDocs(ref);
+            const storedItems = JSON.parse(localStorage.getItem('likedpost')) || [];
+
+            querySnapshot.forEach((doc1) => {
+                //convert Timestamp to Date
+                var date = doc1.data().date.toDate();
+                //only get year, month, date
+                date = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+                var postContainer = document.getElementById("post-container");
+
+                var postDiv = document.createElement("div");
+                postDiv.className = "post";
+                postDiv.class = "post";
+
+                var accountDiv = document.createElement("div");
+                accountDiv.className = "postinfo";
+                accountDiv.class = "postinfo";
+
+                var postinfotextDiv = document.createElement("div");
+                postinfotextDiv.className = "postinfotext";
+                postinfotextDiv.class = "postinfotext";
+
+                var nameElement = document.createElement("h3");
+                nameElement.textContent = doc1.data().poser;
+                nameElement.id = "name" + doc1.id;
+
+                var dateElement = document.createElement("p");
+                dateElement.textContent = "發布於  " + date;
+                dateElement.classList.add("date");
+                dateElement.id = "date" + doc1.id;
+
+                var profileImage = document.createElement("img");
+                profileImage.src = "./pictures/" + doc1.data().profileimg + ".png";
+                console.log("./pictures/" + doc1.data().profileimg + ".png");
+                profileImage.alt = "Profile";
+                profileImage.classList.add("profileImage");
+                profileImage.id = doc1.id + "profileImage";
+
+
+                var contentElement = document.createElement("p");
+                contentElement.textContent = doc1.data().content;
+                contentElement.id = "content" + doc1.id;
+                //check weather the data contains imageUrl
+                if (doc1.data().imageUrl != "") {
+                    //img aera
+                    var img = document.createElement("img");
+                    img.src = doc1.data().imageUrl;
+                    img.style.width = "100%";
+                    img.style.height = "400px";
+                    img.id = "img" + doc1.id;
+                }
+
+                var buttonDiv = document.createElement("div");
+                buttonDiv.className = "button";
+                //like aera
+                var likeButton = document.createElement("button");
+                likeButton.className = "like";
+                likeButton.textContent = doc1.data().like;
+                likeButton.style.color = "black";
+                likeButton.id = "likebutton" + doc1.id;
+                likeButton.setAttribute("value", doc1.id);
+
+                var likeContent = document.createElement("span");
+
+                var likeImage = document.createElement("img");
+                likeImage.src = "./pictures/like.png"; // 將 "path/to/like-icon.png" 替換為實際的圖片路徑
+                likeImage.alt = "Like";
+                likeImage.id = "likeImage" + doc1.id;
+                likeImage.classList.add("likeImage");
+                likeImage.setAttribute("value", doc1.id);
+
+                var commentImage = document.createElement("img");
+                commentImage.src = "./pictures/comment.png";
+                commentImage.alt = "Comment";
+                commentImage.classList.add("commentImage");
+                commentImage.id = "commentImage" + doc1.id;
+                commentImage.value = doc1.id;
+                //commentImage.value = doc.id;
+                commentImage.onclick = function () {
+                    //get the value of commentButton
+                    Commentclick(commentImage.value);
+                    getalldbComment(commentButton.value);
+                };
+
+                var commentButton = document.createElement("button");
+                commentButton.textContent = "留言";
+                commentButton.id = "commentButton" + doc1.id;
+                commentButton.value = doc1.id;
+                commentButton.classList.add("commentButton");
+                commentButton.onclick = function () {
+                    //get the value of commentButton
+                    Commentclick(commentButton.value);
+                    getalldbComment(commentButton.value);
+                };
+
+                //like button is clicked
+                likeButton.addEventListener('click', function () {
+                    likeclick(likeButton.getAttribute("value"));
+                });
+                likeImage.addEventListener('click', function () {
+                    likeclick(likeImage.getAttribute("value"));
+                });
+                function likeclick(id) {
+                    if (likeButton.style.color == "black") {
+                        likeButton.style.color = "blue";
+                        likeButton.textContent = doc1.data().like + 1;
+                        likeImage.src = "./pictures/like!.png";
+                        //write the like data to firestore and localstorage
+                        storedItems.push(id);
+                        localStorage.setItem('likedpost', JSON.stringify(storedItems));
+
+                        const postRef = doc(clouddb, 'post', doc1.id);
+                        updateDoc(postRef, {
+                            like: doc1.data().like + 1
+                        });
+
+
+                    }
+                    else {
+                        likeButton.style.color = "black";
+                        likeButton.textContent = doc1.data().like;
+                        likeImage.src = "./pictures/like.png";
+                        //write the like data to firestore and localstorage
+                        storedItems.splice(storedItems.indexOf(id), 1);
+                        localStorage.setItem('likedpost', JSON.stringify(storedItems));
+                        const postRef = doc(clouddb, 'post', doc1.id);
+                        updateDoc(postRef, {
+                            like: doc1.data().like
+                        });
+
+                    }
+                }
+
+                buttonDiv.appendChild(likeButton);
+                buttonDiv.appendChild(likeImage);
+                buttonDiv.appendChild(commentButton);
+                buttonDiv.appendChild(commentImage);
+
+                postinfotextDiv.appendChild(nameElement);
+                postinfotextDiv.appendChild(dateElement);
+
+                accountDiv.appendChild(profileImage);
+                accountDiv.appendChild(postinfotextDiv);
+
+                postDiv.appendChild(accountDiv);
+                postDiv.appendChild(contentElement);
+                //check weather imageUrl is undefined
+                if (doc1.data().imageUrl != null) {
+                    postDiv.appendChild(img);
+                }
+
+                postDiv.appendChild(buttonDiv);
+
+                postContainer.appendChild(postDiv);
+
+            });
+
+
+
+            if (storedItems !== null) {
+                for (var i = 0; i < storedItems.length; i++) {
+                    console.log(storedItems[i]);
+                    var likeButton = document.getElementById("likebutton" + storedItems[i]);
+                    var likeImage = document.getElementById("likeImage" + storedItems[i]);
+                    likeButton.style.color = "blue";
+                    likeImage.src = "./pictures/like!.png";
+
+                }
+            }
+
+
+
+
+            var sendcomment = document.getElementById("sendcomment");
+            sendcomment.addEventListener('click', function () {
+                //get name and profileimg from localstorage
+                var name = localStorage.getItem("username");
+                var profileimg = localStorage.getItem("profileimg");
+                var user = auth.currentUser;
+
+                if (user && name != "" && profileimg != "") {
+
+                    var saycomment = document.getElementById("saycomment");
+                    var commentprofileimg = document.getElementById("commentprofileimgsend");
+                    //write the comment data to firestore
+                    const ref = collection(clouddb, 'post', commentviewlike.value, 'comment');
+                    addDoc(ref, {
+                        date: new Date(),
+                        content: saycomment.value,
+                        name: name,
+                        profileimg: profileimg
+                    }).then(() => {
+                        //refresh the commentview
+                        var commentcollection = document.getElementById("commentcollection");
+                        commentcollection.innerHTML = "";
+                        getalldbComment(commentviewlike.value);
+                        saycomment.value = "";
+
+                    });
+                }
+                else {
+                    alert("您尚未登入，請先登入");
+                    window.location.href = "./login.html";
+                }
+
+            });
+
+            async function getalldbComment(id) {
+                console.log(id);
+                try {
+                    // 从 Firestore 获取数据
+                    const ref = collection(clouddb, 'post', id, 'comment');
+                    const querySnapshot = await getDocs(ref);
+
+                    // 遍历文档
+                    querySnapshot.forEach((doc2) => {
+                        var postDiv = document.createElement("div");
+                        postDiv.className = "message";
+
+                        var titleElement = document.createElement("p");
+                        titleElement.textContent = doc2.data().name + ":";
+                        titleElement.className = "messagetitle";
+                        var dateElement = document.createElement("p");
+                        dateElement.textContent = doc2.data().content;
+                        dateElement.className = "messagecontent";
+
+                        var profileImage = document.createElement("img");
+                        profileImage.src = "./pictures/profile2.png";
+                        profileImage.alt = "Profile";
+                        profileImage.className = "messageprofileImage";
+
+                        postDiv.appendChild(profileImage);
+                        postDiv.appendChild(titleElement);
+                        postDiv.appendChild(dateElement);
+
+                        var commentview = document.getElementById("commentcollection");
+                        commentcollection.appendChild(postDiv);
+                    });
+                } catch (error) {
+                    console.error('錯誤：', error);
+                }
+            }
+        </script>
+        <dialog id="commentview">
+            <button id="close">X</button>
+            <div class="post incommentpost">
+                <div class="postinfo">
+                    <img src="./pictures/profile2.png" alt="Profile" id="commentviewprofileImage">
+                    <div class="postinfotext">
+                        <h3 id="commentviewname"></h3>
+                        <p class="date" id="commentviewdate"></p>
+                    </div>
+                </div>
+
+                <p id="commentviewcontent"></p>
+                <div id="commentviewimg"></div>
+                <div class="button">
+                    <button id="commentviewlike" class="like" style="color: black;">0</button>
+                    <img src="./pictures/like.png" alt="Like" id="commentviewlikeImage" class="likeImage">
+                    <button>留言</button>
+                    <img src="./pictures/comment.png" alt="Comment" class="commentImage">
+                </div>
+
+            </div>
+            <p>留言:</p>
+            <div id="commentcollection"></div>
+            <div class="saysomething">
+                <img class="commentprofileimg" src="./pictures/profile2.png" index="profile2"
+                    id="commentprofileimgsend">
+                <input class="saycomment" id="saycomment" type="text" placeholder="說點什麼吧...">
+                <img src="./pictures/send.png" alt="send" class="sendcomment" id="sendcomment" width="20px"
+                    height="20px">
+            </div>
+
+        </dialog>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+
+.login {
+    width: 45%;
+    height: 50%;
+    margin: 0 auto;
+    margin-top: 140px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+    width: 100%;
+}
+
+.login input {
+    width: 280px;
+    height: 30px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+.form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+    width: 100%;
+    
+}
+.form div p{
+    width: 80px;
+}
+.form div span{
+    flex-grow: 3;
+}
+
+
+.confirm:hover {
+    background-color: #7092BE;
+    cursor: pointer;
+}
+.login input
+{
+    width: 100px;
+}
+.login input[type="text"],
+input[type="password"] {
+    border: 1px solid #ccc;
+}
+
+.login input[type="text"]:focus,
+input[type="password"]:focus {
+    border: 1px solid #3b5999;
+}
+
+.login p {
+    text-align: center;
+}
+.confirm{
+    background-color: #b6b8b8;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+#selectimg{
+    left: 0px;
+    margin: 10px;
+}
+#selectimg img{
+    width: 45px;
+    height: 45px;
+}
+#profileimgselect{
+    margin-left:60px;
+}

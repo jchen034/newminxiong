@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./post.css">
+  <link rel="stylesheet" href="./map.css">
+  <script src="./post.js"></script>
+  <style>
+
+  </style>
+  <title>留言板</title>
+</head>
+
+<body>
+  <nav>
+    <img src="./pictures/logo.png" alt="Logo">
+    <a href="index.html">首頁</a>
+    <div class="dropdown">
+      <a>簡介</a>
+      <div class="dropdown-content dropdown-content-columns intro">
+        <a href="history.html">歷史</a>
+        <a href="location.html">地理位置</a>
+        <a href="features.html">特色</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a>景點</a>
+      <div class="dropdown-content dropdown-content-columns sights">
+        <a href="delicious.html">好吃的</a>
+        <a href="fun.html">好玩的</a>
+      </div>
+    </div>
+    <a href="threads.html">互動平台</a>
+    <a href="weather.html">即時天氣</a>
+    <a href="traffic.html">交通</a>
+    <a href="activity.html">近期活動</a>
+
+    <div class="right-corner">
+      <img src="./pictures/moon.png" alt="Moon" class="moon-img">
+    </div>
+    <img src="./pictures/hand.png" alt="hand" class="hand-img">
+    <img src="./pictures/ground.png" alt="Ground" class="ground-img1">
+    <img src="./pictures/ground.png" alt="Ground" class="ground-img2">
+    <img src="./pictures/ground.png" alt="Ground" class="ground-img3">
+    <img src="./pictures/ground.png" alt="Ground" class="ground-img4">
+    <img src="./pictures/ground.png" alt="Ground" class="ground-img5">
+  </nav>
+
+  <dialog id="backdialog" class="back">
+    <h3>發文成功</h3>
+    <button id="back">返回</button>
+  </dialog>
+
+  <div class="stars">
+    <img src="./pictures/star.png" alt="stars" class="star">
+    <img src="./pictures/star.png" alt="stars" class="star">
+    <img src="./pictures/star.png" alt="stars" class="star">
+    <img src="./pictures/star2.png" alt="stars" class="star">
+    <img src="./pictures/star2.png" alt="stars" class="star">
+  </div>
+
+  <div class="container">
+    <div class="nickname">
+      <label for="name">暱稱:</label>
+      <input id="name" type="text" placeholder="暱稱">
+      <img src="./pictures/profile1.png" width="55px" height="80px" id="profileimg" index="profile1">
+      <label for="profileimg" id="profileimglabel">點擊更換頭像</label>
+    </div>
+
+    <div id="uploadimage">
+      <input type="file" id="imageInput" accept="image/*">
+      <img id="previewImage" style="max-width: 300px; max-height: 300px; display: none;">
+    </div>
+
+    <textarea id="message" placeholder="說點什麼吧!" name="message" required></textarea>
+
+    <div class="button">
+      <button id="submit">發布</button>
+      <button id="cancel">取消</button>
+    </div>
+  </div>
+  <div id="dialogaera">
+    <dialog id="dialog">
+      <button id="close">X</button>
+      <img src="./pictures/profile1.png" width="40px" height="90px" class="profileimg" index="profile1">
+      <img src="./pictures/profile2.png" width="40px" height="90px" class="profileimg" index="profile2">
+      <img src="./pictures/profile3.png" width="40px" height="90px" class="profileimg" index="profile3">
+      <img src="./pictures/profile4.png" width="40px" height="90px" class="profileimg" index="profile4">
+      <img src="./pictures/profile5.png" width="40px" height="90px" class="profileimg" index="profile5">
+    </dialog>
+  </div>
+  <script>
+    var backdialog = document.getElementById("backdialog")
+    //get the userid
+    var userid = ""
+    //get the localstorage
+    userid = localStorage.getItem('username');
+    console.log(userid);
+    if (userid == null) {
+      //redirect to login.html
+      alert("請先登入");
+      window.location.href = "./login.html?from=post.html";
+    }
+    else {
+      //get the profile image
+      var name1 = document.getElementById('name');
+      var profileimg = document.getElementById('profileimg');
+      //get the profile image and name data from localstorage
+      profileimg.src = "./pictures/" + localStorage.getItem('profileimg') + ".png";
+      profileimg.setAttribute('index', localStorage.getItem('profileimg'));
+      name1.value = localStorage.getItem('username');
+      name1.readOnly = true;
+      profileimg, disabled = true;
+    }
+  </script>
+
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+    import { getFirestore, collection, doc, addDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBdxQhxakgQCIYKjEtAAPk_6i945ASf1o4",
+      authDomain: "beat-cat-bed4f.firebaseapp.com",
+      projectId: "beat-cat-bed4f",
+      storageBucket: "beat-cat-bed4f.appspot.com",
+      messagingSenderId: "326045849594",
+      appId: "1:326045849594:web:dc871d0fd046498dbe3643",
+      measurementId: "G-1L7HBW11H4"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const clouddb = getFirestore(app);
+    const storage = getStorage(app);
+    const auth = getAuth(app);
+
+    var content = document.getElementById('message');
+    var name = document.getElementById('name');
+    var submitButton = document.getElementById('submit');
+    const imageInput = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+    //click submit button
+    submitButton.addEventListener('click', function (e) {
+      var ref1 = collection(clouddb, 'post');
+      var postDoc = doc(ref1, 'post123');
+      const imageFile = imageInput.files[0];
+
+      var user = auth.currentUser;
+
+      if (user) {
+        // User is signed in.
+        console.log("login" + user);
+
+
+        if (imageFile) {
+          try {
+            //creat a unique filename
+            const date = new Date();
+            const random = Math.random().toString(36).substring(2);
+            const filename = date.getFullYear() + date.getMonth() + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds() + random;
+            const storageRef = ref(storage, `images/${filename}`);
+            const imageFile = imageInput.files[0];
+            //const imageRef = storageRef.child(imageFile.name);
+            const imageRef = ref(storageRef, imageFile.name);
+
+
+            uploadBytes(storageRef, imageFile).then((snapshot) => {
+              return getDownloadURL(snapshot.ref);
+            }).then((imageUrl) => {
+              // 在这里将 imageUrl、name 和 message 存储到数据库中
+              addDoc(ref1, {
+                date: new Date(),
+                content: content.value,
+                poser: name.value,
+                like: 0,
+                imageUrl: imageUrl,
+                profileimg: profileimg.getAttribute('index')
+              }).then(() => {
+                content.value = "";
+                name.value = "";
+                //clear the image
+                previewImage.src = "";
+                previewImage.style.display = 'none';
+                //clear the imageInput
+                imageInput.value = "";
+
+                //
+              });
+            }).catch((error) => {
+              console.error('Error uploading image:', error);
+            });
+          } catch (error) {
+            console.error('錯誤：', error);
+          }
+        }
+        else {
+            try {
+              addDoc(ref1, {
+                date: new Date(),
+                content: content.value,
+                poser: name.value,
+                like: 0,
+                profileimg: profileimg.getAttribute('index')
+              }).then(() => {
+                content.value = "";
+                name.value = "";
+                //clear the image
+                previewImage.src = "";
+                previewImage.style.display = 'none';
+                //clear the imageInput123
+                imageInput.value = "";
+                var backdialog = document.getElementById("backdialog")
+                backdialog.showModal()
+              });
+            } catch (error) {
+              console.error('錯誤：', error);
+            }
+
+          }
+          //wait for 0.5 second
+          //setTimeout(function () {
+          //  window.location.href = "./threads.html";
+          //}, 900);
+          backdialog.showModal()
+
+        }
+        else {
+          alert("驗證失敗，請重新登入");
+          window.location.href = "./login.html?from=post.html";
+        }
+      });
+  </script>
+  <script>
+    // 获取元素
+
+
+    // 添加图片选择的事件监听器
+    imageInput.addEventListener('change', handleImageUpload);
+    function handleImageUpload() {
+      const file = imageInput.files[0];
+      if (file) {
+        // 显示预览图
+        previewImage.src = URL.createObjectURL(file);
+        previewImage.style.display = 'block';
+        const imageFile = imageInput.files[0];
+      }
+    }
+    //handle cancel button
+
+    var cancelButton = document.getElementById('cancel');
+    cancelButton.addEventListener('click', function (e) {
+      var content = document.getElementById('message');
+      var name = document.getElementById('name');
+      content.value = "";
+      name.value = "";
+      //clear the image
+      previewImage.src = "";
+      previewImage.style.display = 'none';
+      //clear the imageInput
+      imageInput.value = "";
+    });
+
+    //hahdle profileimage click
+    var profileimg = document.getElementById('profileimg');
+    profileimg.addEventListener('click', function (e) {
+      //show a dialog
+      var dialog = document.querySelector('dialog');
+      dialog.showModal();
+    });
+    //handle close button
+    var close = document.getElementById('close');
+    close.addEventListener('click', function (e) {
+      var dialog = document.querySelector('dialog');
+      dialog.close();
+    });
+    //handle profileimg click
+    var profileimgs = document.getElementsByClassName('profileimg');
+    for (var i = 0; i < profileimgs.length; i++) {
+      profileimgs[i].addEventListener('click', function (e) {
+        var profileimg = document.getElementById('profileimg');
+        profileimg.src = this.src;
+        profileimg.setAttribute('index', this.getAttribute('index'));
+        var dialog = document.querySelector('dialog');
+        dialog.close();
+      });
+    }
+
+  </script>
+  <script>
+    var back = document.getElementById("back");
+    back.addEventListener('click', function (e) {
+      var backdialog = document.getElementById('backdialog')
+      backdialog.close()
+      window.location.href="./threads.html"
+    });
+
+  </script>
+</body>
+
+</html>

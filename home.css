@@ -1,14 +1,15 @@
 @font-face {
     font-family: 'meow';
-    /* 你可以随意指定字体名称 */
     src: url('Iansui-Regular.ttf') format('truetype');
 }
+/* 將本地的 Iansui-Regular.ttf 字型檔載入，命名為 'meow' 供使用 */
 
 body {
     background-color: #303030;
     margin: 0;
     font-family: 'meow';
 }
+/* 頁面背景為深灰，移除預設外距，並使用自定字體 */
 
 nav {
     background-color: #303030;
@@ -24,6 +25,7 @@ nav {
     font-size: 20px;
     font-family: 'meow';
 }
+/* 導覽列固定在頁面最上方，深灰底，內容水平排列，文字大小20px */
 
 nav a {
     float: left;
@@ -35,17 +37,20 @@ nav a {
     border-radius: 15px;
     transition: background-color 0.3s ease;
 }
+/* 導覽列連結樣式，白色字體，內邊距，滑鼠懸停時有動畫 */
 
 nav a:hover {
     background-color: #8c8c8c;
     color: black;
 }
+/* 滑鼠懸停變成灰底黑字 */
 
 nav .dropdown {
     position: relative;
     display: inline-block;
     cursor: pointer;
 }
+/* 下拉選單父層設為 relative，內部子選單可定位 */
 
 nav .dropdown-content {
     position: absolute;
@@ -60,21 +65,25 @@ nav .dropdown-content {
     transform: translateX(-50%);
     display: none;
 }
+/* 下拉選單的內容區塊，初始隱藏，定位置中、寬 250% */
 
 nav .dropdown-content ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
+/* 如果下拉裡用 ul 的話，清除預設樣式 */
 
 nav .dropdown-content ul li {
     margin-bottom: 0.5%;
     display: block;
 }
+/* 下拉選單每個項目的間距與排列 */
 
 nav .dropdown:hover .dropdown-content {
     display: block;
 }
+/* 滑鼠移入 dropdown，顯示子選單 */
 
 nav .dropdown-content a {
     display: block;
@@ -85,30 +94,35 @@ nav .dropdown-content a {
     border-radius: 10px;
     transition: background-color 0.3s ease;
 }
+/* 下拉選單連結樣式，白字、置中、圓角、hover 有動畫 */
 
 nav .dropdown:hover:not(.intro) a {
     background-color: #8c8c8c;
     border-radius: 15px;
 }
+/* 非 intro 類別的 dropdown，在 hover 時整塊灰色背景 */
 
-/*歷史地理位置特色的設定*/
 nav .dropdown-content.intro a:hover {
     background-color: #8c8c8c;
     color: black;
     position: relative;
 }
+/* 簡介選單的 hover 狀態：灰底黑字，加上 position relative 供 ::before 用 */
 
 nav .dropdown-content.intro a:hover:nth-child(1) {
     background-color: #79AF9E;
 }
+/* 歷史：hover 時變成綠色 */
 
 nav .dropdown-content.intro a:hover:nth-child(2) {
     background-color: #CFAA80;
 }
+/* 地理位置：hover 時變成橙色 */
 
 nav .dropdown-content.intro a:hover:nth-child(3) {
     background-color: #BC7145;
 }
+/* 特色：hover 時變成紅棕色 */
 
 nav .dropdown-content.intro a:hover:nth-child(1)::before {
     content: "";
@@ -120,6 +134,7 @@ nav .dropdown-content.intro a:hover:nth-child(1)::before {
     height: 30px;
     top: 7px;
 }
+/* 歷史選項：hover 時左邊出現小圖示 */
 
 nav .dropdown-content.intro a:hover:nth-child(2)::before {
     content: "";
@@ -131,6 +146,7 @@ nav .dropdown-content.intro a:hover:nth-child(2)::before {
     height: 36px;
     top: 5px;
 }
+/* 地理位置：hover 出現小圖示 */
 
 nav .dropdown-content.intro a:hover:nth-child(3)::before {
     content: "";
@@ -142,22 +158,24 @@ nav .dropdown-content.intro a:hover:nth-child(3)::before {
     height: 39px;
     top: 4px;
 }
+/* 特色：hover 出現小圖示 */
 
-/*好吃的好玩的設定*/
 nav .dropdown-content.sights a:hover {
     background-color: #ddd;
     color: black;
     position: relative;
 }
+/* 景點類的下拉選單 hover 效果（預設灰白） */
 
 nav .dropdown-content.sights a:hover:nth-child(1) {
     background-color: #A795C2;
 }
+/* 好吃的：hover 變成紫色 */
 
 nav .dropdown-content.sights a:hover:nth-child(2) {
     background-color: #7A9FB2;
 }
-
+/* 好玩的：hover 變成藍綠色 */
 
 nav .dropdown-content.sights a:hover:nth-child(1)::before {
     content: "";
@@ -169,6 +187,7 @@ nav .dropdown-content.sights a:hover:nth-child(1)::before {
     height: 30px;
     top: 8px;
 }
+/* 好吃的：hover 顯示食物圖示 */
 
 nav .dropdown-content.sights a:hover:nth-child(2)::before {
     content: "";
@@ -180,24 +199,28 @@ nav .dropdown-content.sights a:hover:nth-child(2)::before {
     height: 30px;
     top: 8px;
 }
+/* 好玩的：hover 顯示玩樂圖示 */
 
 nav .right-corner {
     display: flex;
     align-items: center;
     margin-right: 0px;
 }
+/* 導覽列右上角容器，放月亮圖 */
 
 nav img {
     margin-left: -5px;
     margin-top: -20px;
     height: 75px;
 }
+/* 所有 nav 裡圖片的基本大小與位置調整 */
 
 nav .moon-img {
     margin-left: 0px;
     margin-top: -30px;
     height: 70px;
 }
+/* 月亮圖的位置與大小 */
 
 .ground-img1,
 .ground-img2,
@@ -209,40 +232,33 @@ nav .moon-img {
     height: 25%;
     width: 25%;
 }
+/* 地面圖：五張分別鋪滿下方 */
+
 .hand-img {
     position: absolute;
     bottom: 0;
     height: 5%;
     width: 2.5%;
 }
-.ground-img1 {
-    margin-left: 0%; 
-}
+/* 手的圖：右下角位置 */
 
-.ground-img2 {
-    margin-left: 25%; 
-}
-
-.ground-img3 {
-    margin-left: 50%; 
-}
-
-.ground-img4 {
-    margin-left: 75%; 
-}
-
-.ground-img5 {
-    margin-left: 100%; 
-}
+.ground-img1 { margin-left: 0%; }
+.ground-img2 { margin-left: 25%; }
+.ground-img3 { margin-left: 50%; }
+.ground-img4 { margin-left: 75%; }
+.ground-img5 { margin-left: 100%; }
+/* 每張地面圖往右位移 25%，排列成一整排 */
 
 .hand-img {
     height: 70%;
-    margin-left: 88%; 
+    margin-left: 88%;
 }
+/* 手圖的高度與位置再調整（此處與上方 hand-img 重複，可刪一個） */
 
 .title-img {
     height: 54.32em; 
 }
+/* 標題圖的固定高度設定 */
 
 .dropdown-content-columns {
     display: flex;
@@ -250,15 +266,19 @@ nav .moon-img {
     width: 100%;
     text-align: center;
 }
+/* 下拉選單內容改為垂直排列並置中 */
 
 .dropdown-content-columns a {
     padding: 10px;
     display: block;
     width: 100%;
 }
+/* 下拉選單中的超連結填滿整列 */
 
 .dropdown-content a,
 .dropdown-content-columns a,
 nav a {
     color: white;
 }
+/* 所有導覽列與下拉選單連結文字統一為白色 */
+

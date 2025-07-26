@@ -126,21 +126,23 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleIndicators'), {
-        interval: 2000,
-        pause: "hover"
-      });
+            var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleIndicators'), {
+                interval: 1000,
+                pause: "false"
+            });
+
+        });
 
       document.getElementById('btn').addEventListener('click', function () {
         carousel.next();
       });
-      var indicators = document.querySelectorAll('.carousel-indicators button');
+      var indicators = document.querySelectorAll('.carousel-indicators li');
       indicators.forEach(function (indicator, index) {
         indicator.addEventListener('click', function () {
           carousel.to(index);
         });
       });
-    });
+  
   </script>
   <img src="./pictures/under.png" alt="under" class="under-image" style="width: 100%; height: auto;">
 </body>
